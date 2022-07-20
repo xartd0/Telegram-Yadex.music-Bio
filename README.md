@@ -12,10 +12,12 @@
 ### Installation
 
 1. Clone the repo
+
    ```bash
    $ git clone https://github.com/xartd0/Telegram-Yandex.music-Bio.git
    ```
 2. Перед запуском замените api_id и api_hash на свои, достать их можно тут https://my.telegram.org/apps .
+
    ```bash
    $ cd Telegram-Yandex.music-Bio
    $ nano core.py
@@ -26,6 +28,7 @@
 ## Usage
 
 * При первом запуске потребуется вход в аккаунт telegram.
+
    ```bash
    $ python3 core.py
    ```
