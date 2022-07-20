@@ -5,6 +5,7 @@
 ## Getting Started
 
 Данный скрипт будет автоматически менять bio вашего аккаунта telegram на 
+
 ![изображение](https://user-images.githubusercontent.com/43171120/180082727-172dc6c6-ca67-4f5c-89d2-9ec126448a56.png)
 
 
