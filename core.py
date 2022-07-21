@@ -16,7 +16,7 @@ api_id = '' # change here
 api_hash = '' # change here
 old_yandex_data = ''
 old_youtube_data = ''
-media_url = 'https://www.youtube.com/'
+media_url = 'https://www.youtube.com/' #change here
 
 client = TelegramClient('session_name', api_id, api_hash)
 client.start()
