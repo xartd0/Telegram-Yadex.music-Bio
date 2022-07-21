@@ -4,9 +4,9 @@
 
 ## Getting Started
 
-Данный скрипт будет автоматически менять bio вашего аккаунта telegram на 
+This script puts the name and author of the video in bio telegram, which you are currently watching on youtube or yandex.music
 
-![изображение](https://user-images.githubusercontent.com/43171120/180082727-172dc6c6-ca67-4f5c-89d2-9ec126448a56.png)
+![изображение](https://user-images.githubusercontent.com/43171120/180196802-77b66b89-6b94-4a19-b10d-49168906a458.png)
 
 
 ### Installation
@@ -16,7 +16,7 @@
    ```bash
    $ git clone https://github.com/xartd0/Telegram-Yandex.music-Bio.git
    ```
-2. Перед запуском замените api_id и api_hash на свои, достать их можно тут https://my.telegram.org/apps .
+2. Before launching, replace api_id and api_hash with yours, you can get them here https://my.telegram.org/apps.
 
    ```bash
    $ cd Telegram-Yandex.music-Bio
