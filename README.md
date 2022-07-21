@@ -1,5 +1,5 @@
 # Telegram-Yandex.music-Bio
-Скрипт ставит название песни (yandex.music) в bio вашего аккаунта телеграм
+Automatic change of bio telegram
 
 
 ## Getting Started
