@@ -14,8 +14,9 @@ from telethon.tl.functions.account import UpdateProfileRequest
 import asyncio 
 
 
-api_id = 'YOUR API_ID https://my.telegram.org/apps'
-api_hash = 'YOUR API_HASH https://my.telegram.org/apps'
+api_id = ''
+api_hash = ''
+old_data = ''
 
 client = TelegramClient('session_name', api_id, api_hash)
 client.start()
@@ -61,9 +62,13 @@ def setInterval(timer, task):
         Timer(timer, setInterval, [timer, task]).start()
 
 def change_bio(track):
-    client(UpdateProfileRequest(
-                about=track
-            ))
+    global old_data
+    if track != old_data:
+        client(UpdateProfileRequest(
+                    about=track
+                ))
+        old_data = track
+        print('Bio changed')
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
