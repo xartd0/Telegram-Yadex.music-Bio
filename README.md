@@ -23,6 +23,7 @@ This script puts the name and author of the video in bio telegram, which you are
    $ nano core.py
    $ api_id = 'YOUR api_id'
    $ api_hash = 'YOUR api_hash'
+   $ media_url = 'https://www.youtube.com/' or 'https://music.yandex.ru/'
    ```
 
 ## Usage
