@@ -11,12 +11,11 @@ from telethon import TelegramClient
 from telethon.tl.types import PeerChannel
 from telethon import functions, types
 from telethon.tl.functions.account import UpdateProfileRequest
-import asyncio 
 
-
-api_id = ''
-api_hash = ''
-old_data = ''
+api_id = '' # change here 
+api_hash = '' # change here
+old_yandex_data = ''
+old_youtube_data = ''
 
 client = TelegramClient('session_name', api_id, api_hash)
 client.start()
@@ -40,18 +39,41 @@ class MainWindow(QMainWindow):
         self.browser = QWebEngineView()
         page = WebEnginePage(self.browser)
         self.browser.setPage(page)
-        self.browser.load(QUrl("https://music.yandex.ru/home"))
+        self.browser.load(QUrl("https://www.youtube.com/")) # change here
         self.setCentralWidget(self.browser)
         self.browser.loadFinished.connect(self.onLoadFinished)
 
-    def check(self):
-        track = self.browser.page().runJavaScript("externalAPI.getCurrentTrack()", self.getdata)
+    def injectjs(self, code, dist):
+        self.browser.page().runJavaScript(code, dist)
 
-    def getdata(self, data):
+    def check(self):
+        if 'youtube.com/watch' in self.browser.url().toString():
+            self.injectjs('var player = document.getElementById("movie_player"); if (player) true; else false;', self.check_youtube_data)
+        else:
+            self.injectjs("externalAPI.getCurrentTrack()", self.get_yandex_data)
+
+    def get_yandex_data(self, data):
         self.data=data
         if self.data is not None:
             change_bio(f"Слушает ({self.data['artists'][0]['title']} - {self.data['album']['title']})")
 
+    def check_youtube_data(self, data):
+        self.data=data
+        if self.data == True:
+            self.injectjs('player.getVideoData()', self.get_youtube_data)
+
+    def get_youtube_data(self, data):
+        self.data = data 
+        video = f"Смотрит ({self.data['author']} - {self.data['title']})"
+        global old_youtube_data
+        if video != old_youtube_data: 
+            client(UpdateProfileRequest(
+                        about=video
+                    ))
+            old_youtube_data = video
+            print('Bio changed')
+        
+            
     def onLoadFinished(self, ok):
         if ok:
             setInterval(1.0, self.check)
@@ -62,12 +84,12 @@ def setInterval(timer, task):
         Timer(timer, setInterval, [timer, task]).start()
 
 def change_bio(track):
-    global old_data
-    if track != old_data:
+    global old_yandex_data
+    if track != old_yandex_data: 
         client(UpdateProfileRequest(
                     about=track
                 ))
-        old_data = track
+        old_yandex_data = track
         print('Bio changed')
 
 if __name__ == '__main__':
