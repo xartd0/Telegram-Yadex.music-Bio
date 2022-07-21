@@ -14,12 +14,12 @@ This script puts the name and author of the video in bio telegram, which you are
 1. Clone the repo
 
    ```bash
-   $ git clone https://github.com/xartd0/Telegram-Yandex.music-Bio.git
+   $ https://github.com/xartd0/Telegram-Youtube-Yandex-Bio.git
    ```
 2. Before launching, replace api_id and api_hash with yours, you can get them here https://my.telegram.org/apps.
 
    ```bash
-   $ cd Telegram-Yandex.music-Bio
+   $ cd Telegram-Youtube-Yandex-Bio
    $ nano core.py
    $ api_id = 'YOUR api_id'
    $ api_hash = 'YOUR api_hash'
@@ -27,7 +27,7 @@ This script puts the name and author of the video in bio telegram, which you are
 
 ## Usage
 
-* При первом запуске потребуется вход в аккаунт telegram.
+* Before the first launch, you will need to log in to your telegram account.
 
    ```bash
    $ python3 core.py
