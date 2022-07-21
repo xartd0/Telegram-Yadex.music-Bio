@@ -16,6 +16,7 @@ api_id = '' # change here
 api_hash = '' # change here
 old_yandex_data = ''
 old_youtube_data = ''
+media_url = 'https://www.youtube.com/'
 
 client = TelegramClient('session_name', api_id, api_hash)
 client.start()
@@ -35,11 +36,12 @@ class WebEnginePage(QWebEnginePage):
 
 class MainWindow(QMainWindow):
     def __init__(self, *args, **kwargs):
+        global media_url
         super(MainWindow, self).__init__(*args, **kwargs)
         self.browser = QWebEngineView()
         page = WebEnginePage(self.browser)
         self.browser.setPage(page)
-        self.browser.load(QUrl("https://www.youtube.com/")) # change here
+        self.browser.load(QUrl(media_url))
         self.setCentralWidget(self.browser)
         self.browser.loadFinished.connect(self.onLoadFinished)
 
